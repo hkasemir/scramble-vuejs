@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <hello></hello>
+    <word-container></word-container>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello';
+import WordContainer from './components/word-container';
 
 export default {
   name: 'app',
   components: {
-    Hello,
+    WordContainer,
   },
 };
 </script>

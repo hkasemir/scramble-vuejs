@@ -14,6 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
+    "query-string": "^4.3.4",
     "vue": "^2.2.6"
   },
   "devDependencies": {
