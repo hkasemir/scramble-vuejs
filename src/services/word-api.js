@@ -1,9 +1,13 @@
 import queryString from 'query-string';
 
-const WORD_API_URL = 'http://api.wordnik.com:80/v4/words.json';
+const WORD_API_URL = 'https://wordsapiv1.p.mashape.com';
 
 function get(path, params) {
-  return fetch(`${WORD_API_URL}${path}?${queryString.stringify(params)}`)
+  const mashapeKey = 'bi98GDrJgzmshfD9vHg2PDpNANYRp10LW8Tjsn444SBzAudoOL';
+
+  return fetch(`${WORD_API_URL}${path}${params ? `?${queryString.stringify(params)}` : ''}`, {
+    headers: { 'X-Mashape-Key': mashapeKey },
+  })
   .then(res => res.json())
   .then(json => json.word);
 }
@@ -11,13 +15,11 @@ function get(path, params) {
 export default {
   fetchRandomWord() {
     const wordParams = {
-      hasDictionaryDef: 'true',
-      excludePartOfSpeech: 'proper-noun',
-      minCorpusCount: '20000',
-      minLength: 6,
-      maxLength: 6,
-      api_key: 'a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5',
+      random: true,
+      letterPattern: '^[a-z]{6}',
+      frequencymin: 8,
+      letters: 6,
     };
-    return get('/randomWord', wordParams);
+    return get('/words', wordParams);
   },
 };

@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "query-string": "^4.3.4",
+    "scramble": "0.0.4",
     "vue": "^2.2.6"
   },
   "devDependencies": {
